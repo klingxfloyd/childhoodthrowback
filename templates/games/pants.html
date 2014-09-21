@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>PANTS! - The Game</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12"><h1 class="text-center">PANTS! - The <Game></Game></h1></div>
+        <div class="col-md-12"><h2 class="text-center">Letter: {{ letter }}</h2></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            {{ PANTS_form.place.label }}
+        </div>
+        <div class="col-md-2">
+            {{ PANTS_form.animal.label }}
+        </div>
+        <div class="col-md-2">
+            {{ PANTS_form.name.label }}
+        </div>
+        <div class="col-md-2">
+            {{ PANTS_form.thing.label }}
+        </div>
+        <div class="col-md-3">
+            Score
+        </div>
+    </div>
+    {% for answer in answers %}
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                {{ answer.place }}
+            </div>
+            <div class="col-md-2">
+                {{ answer.animal }}
+            </div>
+            <div class="col-md-2">
+                {{ answer.name }}
+            </div>
+            <div class="col-md-2">
+                {{ answer.thing }}
+            </div>
+            <div class="col-md-3">
+                {{ answer.score }}
+            </div>
+        </div>
+    {% endfor %}
+    <form  class="form-inline" action="" method="post" role="form">
+        <div class="row">
+            <div class="form-group col-md-2 col-md-offset-1">
+                {% csrf_token %}
+                {{ PANTS_form.place }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ PANTS_form.animal }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ PANTS_form.name }}
+            </div>
+            <div class="form-group col-md-2">
+                {{ PANTS_form.thing }}
+            </div>
+            <div class="col-md-3">
+                <button type="submit" class="btn btn-success">PANTS</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
